@@ -3,156 +3,237 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>常磐道ドライブナビ</title>
+  <title>常磐道ドライブナビ | PREMIUM</title>
   <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/854/854878.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-color: #0f172a;
-      --card-bg: rgba(30, 41, 59, 0.7);
-      --card-border: rgba(255, 255, 255, 0.1);
-      --primary: #38bdf8;
-      --primary-accent: #0284c7;
-      --accent-orange: #f97316;
-      --accent-green: #10b981;
-      --accent-purple: #a855f7;
+      --bg-gradient: linear-gradient(135deg, #090d16 0%, #111827 100%);
+      --card-bg: rgba(23, 32, 51, 0.65);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --gold-primary: #f59e0b;
+      --gold-light: #fbbf24;
+      --gold-gradient: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
       --text-main: #f8fafc;
       --text-sub: #94a3b8;
+      --accent-red: linear-gradient(135deg, #dc2626, #991b1b);
+      --accent-blue: linear-gradient(135deg, #2563eb, #1d4ed8);
+      --accent-purple: linear-gradient(135deg, #7c3aed, #6d28d9);
+      --accent-orange: linear-gradient(135deg, #ea580c, #c2410c);
+      --accent-green: linear-gradient(135deg, #059669, #047857);
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     body {
-      background-color: var(--bg-color);
+      background: var(--bg-gradient);
+      background-attachment: fixed;
       color: var(--text-main);
-      padding: 16px;
+      padding: 20px 16px;
       max-width: 600px;
       margin: 0 auto;
-      line-height: 1.5;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
+    /* ヘッダー */
     header {
-      background: linear-gradient(135deg, #1e293b, #0f172a);
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(16px);
       border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 20px 16px;
+      border-radius: 20px;
+      padding: 24px 20px;
       text-align: center;
-      margin-bottom: 16px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      margin-bottom: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold-gradient);
     }
 
     header h1 {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-weight: 700;
-      color: var(--primary);
+      letter-spacing: 0.05em;
+      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       margin-bottom: 6px;
     }
 
     header p {
-      font-size: 0.85rem;
-      color: var(--text-sub);
+      font-size: 0.82rem;
+      color: var(--gold-light);
+      font-weight: 500;
+      letter-spacing: 0.03em;
     }
 
+    /* メインカードスタイル */
     .card {
       background: var(--card-bg);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
       border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 18px;
-      margin-bottom: 16px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      border-radius: 20px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .card-title {
       font-size: 1.1rem;
-      font-weight: 600;
+      font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
+      gap: 10px;
+      margin-bottom: 16px;
       color: #ffffff;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding-bottom: 10px;
     }
 
     .notice-box {
-      background: rgba(249, 115, 22, 0.15);
-      border-left: 4px solid var(--accent-orange);
-      border-radius: 6px;
-      padding: 10px 12px;
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 3px solid var(--gold-primary);
+      border-radius: 8px;
+      padding: 12px 14px;
       font-size: 0.85rem;
-      color: #ffedd5;
-      margin-bottom: 12px;
+      color: #fef3c7;
+      margin-bottom: 14px;
     }
 
+    /* ボタンデザイン */
     .btn {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
       width: 100%;
-      padding: 12px;
-      border-radius: 10px;
+      padding: 14px;
+      border-radius: 12px;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       text-decoration: none;
       color: #ffffff;
       margin-bottom: 10px;
       transition: all 0.2s ease;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      letter-spacing: 0.02em;
     }
 
-    .btn:last-child {
-      margin-bottom: 0;
-    }
-
-    .btn-red { background: linear-gradient(135deg, #ef4444, #dc2626); }
-    .btn-blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
-    .btn-orange { background: linear-gradient(135deg, #f97316, #ea580c); }
-    .btn-green { background: linear-gradient(135deg, #10b981, #059669); }
-    .btn-purple { background: linear-gradient(135deg, #a855f7, #7c3aed); }
+    .btn:last-child { margin-bottom: 0; }
+    .btn-red { background: var(--accent-red); }
+    .btn-blue { background: var(--accent-blue); }
+    .btn-orange { background: var(--accent-orange); }
+    .btn-purple { background: var(--accent-purple); }
+    .btn-green { background: var(--accent-green); }
 
     .btn:active {
-      transform: scale(0.98);
+      transform: translateY(1px);
       opacity: 0.9;
     }
 
-    .item-list {
-      list-style: none;
+    /* タブコントロール（グルメ専用） */
+    .tab-container {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 16px;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 4px;
+      border-radius: 12px;
     }
+
+    .tab-btn {
+      flex: 1;
+      padding: 10px 0;
+      border: none;
+      background: transparent;
+      color: var(--text-sub);
+      font-weight: 600;
+      font-size: 0.85rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn.active {
+      background: var(--gold-gradient);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(217, 119, 6, 0.4);
+    }
+
+    /* コンテンツリスト */
+    .gourmet-group { display: none; }
+    .gourmet-group.active { display: block; }
 
     .item-card {
       background: rgba(255, 255, 255, 0.03);
-      border-radius: 8px;
-      padding: 10px 12px;
-      margin-bottom: 8px;
-      font-size: 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 10px;
     }
 
-    .item-card:last-child {
-      margin-bottom: 0;
-    }
+    .item-card:last-child { margin-bottom: 0; }
 
     .item-title {
-      font-weight: 600;
-      color: var(--primary);
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 4px;
     }
 
     .item-desc {
       color: var(--text-sub);
       font-size: 0.82rem;
-      margin-top: 2px;
+      margin-bottom: 8px;
+    }
+
+    .badge-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      color: #cbd5e1;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .badge-busy {
+      font-size: 0.78rem;
+      color: #fde047;
+      background: rgba(253, 224, 71, 0.1);
+      border: 1px solid rgba(253, 224, 71, 0.2);
+      padding: 4px 8px;
+      border-radius: 6px;
+      display: inline-block;
     }
 
     footer {
       text-align: center;
       font-size: 0.75rem;
       color: var(--text-sub);
-      margin-top: 24px;
+      margin-top: 28px;
       margin-bottom: 12px;
     }
   </style>
@@ -160,15 +241,15 @@
 <body>
 
   <header>
-    <h1>🚗 常磐道ドライブナビ</h1>
-    <p>日程：10月2日(金) 〜 10月3日(土) | 仙台 ⇔ 常磐道 ⇔ 千葉</p>
+    <h1>常磐道ドライブナビ</h1>
+    <p>10月2日(金) 〜 10月3日(土) | 仙台 ⇔ 常磐道 ⇔ 千葉</p>
   </header>
 
-  <!-- 高速道路通行止め・規制情報 -->
+  <!-- 道路情報 -->
   <div class="card">
-    <div class="card-title">🚧 高速道路規制・通行止め情報</div>
+    <div class="card-title">🚧 高速道路 規制・通行止め情報</div>
     <div class="notice-box">
-      ⚠️ 宿の規定：高速道路の通行止め等で到達不可の場合、キャンセル料なしで返金
+      ⚠️ 宿規定：通行止め等で到達不可の場合、キャンセル料なしで返金
     </div>
     <a href="https://driveplaza.com/traffic/" target="_blank" class="btn btn-red">
       ドラとら（NEXCO東日本 リアルタイム規制）
@@ -178,14 +259,11 @@
     </a>
   </div>
 
-  <!-- 【新規】千葉県一般道 冠水注意箇所＆危険区域マップ -->
+  <!-- 一般道冠水情報 -->
   <div class="card">
-    <div class="card-title">🌊 千葉県 一般道 冠水・危険区域マップ</div>
-    <div class="notice-box" style="background: rgba(168, 85, 247, 0.15); border-left-color: var(--accent-purple); color: #f3e8ff;">
-      💡 高速道路を降りた後のアンダーパス冠水や危険道路の確認用
-    </div>
+    <div class="card-title">🌊 千葉県 一般道 冠水・危険区域</div>
     <a href="https://www.ktr.mlit.go.jp/chiba/chiba00030.html" target="_blank" class="btn btn-purple">
-      千葉県 道路冠水注意箇所マップ（国土交通省）
+      千葉県 道路冠水注意箇所マップ（国交省）
     </a>
     <a href="http://www.bousai.pref.chiba.lg.jp/" target="_blank" class="btn btn-blue">
       千葉県防災ポータル（雨量・道路規制）
@@ -195,123 +273,157 @@
     </a>
   </div>
 
-  <!-- 天気・台風情報（2日間） -->
+  <!-- 天気情報 -->
   <div class="card">
-    <div class="card-title">🌀 10/2(金)・10/3(土) ピンポイント天気＆台風</div>
-    <div class="item-list" style="margin-bottom: 10px;">
-      <div class="item-card">
-        <div class="item-title">10月2日(金)</div>
-        <div class="item-desc">仙台〜千葉・沿線広域の雨量・風速予報</div>
-      </div>
-      <div class="item-card">
-        <div class="item-title">10月3日(土)</div>
-        <div class="item-desc">復路・目的地周辺の最新気象コンディション</div>
-      </div>
-    </div>
+    <div class="card-title">🌀 ピンポイント天気＆台風</div>
     <a href="https://tenki.jp/typhoon/" target="_blank" class="btn btn-blue">
-      tenki.jp 最新台風情報・台風進路図
+      tenki.jp 最新台風情報・進路図
     </a>
   </div>
 
-  <!-- 常磐道 SA/PA おすすめグルメ5選 -->
+  <!-- グルメ名店（タブ切替機能付き） -->
   <div class="card">
-    <div class="card-title">🍱 常磐道 SA/PAおすすめグルメ5選</div>
-    <ul class="item-list" style="margin-bottom: 12px;">
-      <li class="item-card">
-        <div class="item-title">1. 友部SA（上り）</div>
-        <div class="item-desc">筑波山もち豚の炙り豚丼、ほしかったの干し芋</div>
-      </li>
-      <li class="item-card">
-        <div class="item-title">2. 守谷SA（上り）</div>
-        <div class="item-desc">茨城名物納豆ドッグ、守谷ちずけーき</div>
-      </li>
-      <li class="item-card">
-        <div class="item-title">3. 中郷SA（上り）</div>
-        <div class="item-desc">メヒカリのから揚げ、常陸牛ハンバーグ</div>
-      </li>
-      <li class="item-card">
-        <div class="item-title">4. 東海PA（上り）</div>
-        <div class="item-desc">茨城県産芋を使ったなめらかスイートポテト・軽食</div>
-      </li>
-      <li class="item-card">
-        <div class="item-title">5. 千代田PA（上り）</div>
-        <div class="item-desc">ドライバー御用達！手作りモツ煮定食</div>
-      </li>
-    </ul>
-    <a href="https://www.driveplaza.com/sapa/area/joban/" target="_blank" class="btn btn-orange">
-      ドラぷら：常磐道 SA・PA一覧
-    </a>
-  </div>
+    <div class="card-title">👑 千葉県 グルメ名店おすすめ3選</div>
 
-  <!-- 道中・目的地周辺おすすめスポット5選 -->
-  <div class="card">
-    <div class="card-title">📍 道中・目的地周辺スポット5選</div>
-    <ul class="item-list">
-      <li class="item-card">
-        <div class="item-title">1. 国営ひたち海浜公園（茨城県）</div>
-        <div class="item-desc">広大な園内と季節の絶景スポット（ひたちなかICすぐ）</div>
-      </li>
-      <li class="item-card">
-        <div class="item-title">2. 牛久大仏（茨城県）</div>
-        <div class="item-desc">世界最大級の青銅製立像（阿見東ICより約3分）</div>
-      </li>
-      <li class="item-card">
-        <div class="item-title">3. 袋田の滝（茨城県）</div>
-        <div class="item-desc">日本三名瀑の一つ。迫力満点の大自然スポット</div>
-      </li>
-      <li class="item-card">
-        <div class="item-title">4. 成田山新勝寺（千葉県）</div>
-        <div class="item-desc">歴史ある参道と名物のうなぎ料理を満喫</div>
-      </li>
-      <li class="item-card">
-        <div class="item-title">5. 鋸山 日本寺（千葉県）</div>
-        <div class="item-desc">スリル満点の「地獄覗き」と絶景東京湾パノラマ</div>
-      </li>
-    </ul>
-  </div>
+    <div class="tab-container">
+      <button class="tab-btn active" onclick="switchTab('seafood')">海鮮丼</button>
+      <button class="tab-btn" onclick="switchTab('ramen')">ラーメン</button>
+      <button class="tab-btn" onclick="switchTab('teishoku')">定食</button>
+    </div>
 
-  <!-- 常磐道 沿線イオンモール検索 -->
-  <div class="card">
-    <div class="card-title">🛍️ 常磐道 沿線イオンモール検索</div>
-    <div class="item-list" style="margin-bottom: 12px;">
+    <!-- 海鮮丼 -->
+    <div id="seafood" class="gourmet-group active">
       <div class="item-card">
-        <div class="item-title">主な立ち寄りスポット</div>
-        <div class="item-desc">イオンモールつくば / 土浦 / 水戸内原 / いわき小名浜</div>
+        <div class="item-title">1. さすけ食堂（富津市）</div>
+        <div class="item-desc">絶品「黄金アジ」の刺身・フリッター風フライと名物海鮮丼</div>
+        <div class="badge-group">
+          <span class="badge">🕒 10:00～15:00（完売次第終了）</span>
+          <span class="badge">🗓️ 火・水・木定休</span>
+        </div>
+        <div class="badge-busy">🔥 開店前から大行列。朝一の整理券確保を推奨</div>
+      </div>
+      <div class="item-card">
+        <div class="item-title">2. まるはごっつお（富津市）</div>
+        <div class="item-desc">地魚を惜しみなく盛ったボリューム満点の特選海鮮丼</div>
+        <div class="badge-group">
+          <span class="badge">🕒 11:00～15:00</span>
+          <span class="badge">🗓️ 火曜日定休</span>
+        </div>
+        <div class="badge-busy">🔥 土日ランチピーク（11:30〜13:30）は1時間待ち有</div>
+      </div>
+      <div class="item-card">
+        <div class="item-title">3. 一山いけす（銚子市）</div>
+        <div class="item-desc">太平洋を望む大生けす。極上の伊勢海老＆新鮮海鮮丼</div>
+        <div class="badge-group">
+          <span class="badge">🕒 11:00～15:00 / 17:00～19:30</span>
+          <span class="badge">🗓️ 木曜日定休</span>
+        </div>
+        <div class="badge-busy">🔥 休日の昼時は非常に混雑。11時前の到着が理想</div>
       </div>
     </div>
-    <a href="https://www.google.com/maps/search/%E5%B8%B8%E7%A3%90%E9%81%93+%E3%82%A4%E3%82%AA%E3%83%B3%E3%83%A2%E3%83%BC%E3%83%AB" target="_blank" class="btn btn-green">
-      現在地から近くのイオンモールを検索
+
+    <!-- ラーメン -->
+    <div id="ramen" class="gourmet-group">
+      <div class="item-card">
+        <div class="item-title">1. 江ざわ（勝浦市）</div>
+        <div class="item-desc">勝浦タンタンメン元祖！自家製ラー油と玉ねぎの極上旨辛スープ</div>
+        <div class="badge-group">
+          <span class="badge">🕒 11:30～18:00（完売終了）</span>
+          <span class="badge">🗓️ 月曜日定休</span>
+        </div>
+        <div class="badge-busy">🔥 超人気店。平日でも受付後1〜2時間待ち発生</div>
+      </div>
+      <div class="item-card">
+        <div class="item-title">2. 杉田家 千葉祐光店（千葉市）</div>
+        <div class="item-desc">家系ラーメン直系店。深みのある濃厚醤油豚骨スープ</div>
+        <div class="badge-group">
+          <span class="badge">🕒 05:00～翌01:00</span>
+          <span class="badge">🗓️ 月曜日定休</span>
+        </div>
+        <div class="badge-busy">🔥 朝ラーメンも行列。昼夜ピーク時は30分以上待ち</div>
+      </div>
+      <div class="item-card">
+        <div class="item-title">3. 八平の食堂 / アリランラーメン（長南町）</div>
+        <div class="item-desc">秘境系名物！ニンニク・タマネギ・豚肉の旨味が詰まった一杯</div>
+        <div class="badge-group">
+          <span class="badge">🕒 11:00～16:00</span>
+          <span class="badge">🗓️ 水曜日定休</span>
+        </div>
+        <div class="badge-busy">🔥 山間部ながら休日終日混雑。早めの訪問が必須</div>
+      </div>
+    </div>
+
+    <!-- 定食 -->
+    <div id="teishoku" class="gourmet-group">
+      <div class="item-card">
+        <div class="item-title">1. 漁師料理 かながわ（富津市）</div>
+        <div class="item-desc">海を眺めながら味わう大きなアジフライ定食＆貝焼きセット</div>
+        <div class="badge-group">
+          <span class="badge">🕒 11:00～18:00（L.O. 17:30）</span>
+          <span class="badge">🗓️ 年中無休</span>
+        </div>
+        <div class="badge-busy">🔥 大箱のためスムーズだが12時台は満席になりやすい</div>
+      </div>
+      <div class="item-card">
+        <div class="item-title">2. 保田漁港 お食事処 ばんや（鋸南町）</div>
+        <div class="item-desc">保田漁協直営！朝獲れ地魚刺身・煮付定食</div>
+        <div class="badge-group">
+          <span class="badge">🕒 09:30～17:45（L.O. 17:00）</span>
+          <span class="badge">🗓️ 年中無休</span>
+        </div>
+        <div class="badge-busy">🔥 11:00〜14:00は広大な駐車場が満車になるほど激混み</div>
+      </div>
+      <div class="item-card">
+        <div class="item-title">3. 味処 むさし（鴨川市）</div>
+        <div class="item-desc">地元の海の幸を満載した刺身定食とジャンボエビフライ</div>
+        <div class="badge-group">
+          <span class="badge">🕒 11:30～14:00 / 17:00～20:00</span>
+          <span class="badge">🗓️ 不定休</span>
+        </div>
+        <div class="badge-busy">🔥 休日の昼時は地元の常連・観光客で満席になりやすい</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 常磐道 SA/PA -->
+  <div class="card">
+    <div class="card-title">🍱 常磐道 SA/PA名物グルメ</div>
+    <a href="https://www.driveplaza.com/sapa/area/joban/" target="_blank" class="btn btn-orange">
+      ドラぷら：常磐道 SA・PA一覧を見る
     </a>
   </div>
 
-  <!-- JCBギフトカード 利用可能店舗検索 -->
+  <!-- イオンモール検索 -->
   <div class="card">
-    <div class="card-title">💳 JCBギフトカード 使えるお店検索</div>
-    <p style="font-size: 0.8rem; color: var(--text-sub); margin-bottom: 10px;">
-      福島県・茨城県・千葉県のおもな対象チェーン・店舗
-    </p>
-    <ul class="item-list" style="margin-bottom: 12px;">
-      <li class="item-card">
-        <div class="item-title">【スーパー】</div>
-        <div class="item-desc">イオン、イトーヨーカドー、ヨークベニマル、ベイシア</div>
-      </li>
-      <li class="item-card">
-        <div class="item-title">【家電・ホームセンター】</div>
-        <div class="item-desc">ケーズデンキ、ヤマダデンキ、カインズ、コメリ</div>
-      </li>
-      <li class="item-card">
-        <div class="item-title">【飲食店・ドラッグストア】</div>
-        <div class="item-desc">デニーズ、木曽路、ウエルシア、ツルハドラッグ</div>
-      </li>
-    </ul>
+    <div class="card-title">🛍️ 沿線イオンモール検索</div>
+    <a href="https://www.google.com/maps/search/%E5%B8%B8%E7%A3%90%E9%81%93+%E3%82%A4%E3%82%AA%E3%83%B3%E3%83%A2%E3%83%BC%E3%83%AB" target="_blank" class="btn btn-green">
+      現在地から近くのイオンモールを探す
+    </a>
+  </div>
+
+  <!-- JCBギフトカード -->
+  <div class="card">
+    <div class="card-title">💳 JCBギフトカード 使えるお店</div>
     <a href="https://www.jcb.co.jp/voucher/gift-card/merchant.html" target="_blank" class="btn btn-blue">
-      JCB公式：使えるお店一覧（全国・県別）
+      JCB公式：使えるお店一覧（都道府県別）
     </a>
   </div>
 
   <footer>
-    &copy; 2026 常磐道旅行サポートナビ
+    &copy; 2026 常磐道旅行サポートナビ PREMIUM
   </footer>
+
+  <script>
+    function switchTab(tabId) {
+      // タブの全非アクティブ化
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.gourmet-group').forEach(group => group.classList.remove('active'));
+
+      // 選択したタブのアクティブ化
+      event.target.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+  </script>
 
 </body>
 </html>
