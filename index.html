@@ -188,7 +188,7 @@
       margin-bottom: 10px;
     }
 
-    .item-card:last-child { margin-bottom: 0; }
+    .item-card:last-child { margin-bottom: 12px; }
 
     .item-title {
       font-size: 0.98rem;
@@ -286,9 +286,9 @@
     <div class="card-title">👑 千葉県 グルメ名店おすすめ3選</div>
 
     <div class="tab-container">
-      <button class="tab-btn active" onclick="switchTab('seafood')">海鮮丼</button>
-      <button class="tab-btn" onclick="switchTab('ramen')">ラーメン</button>
-      <button class="tab-btn" onclick="switchTab('teishoku')">定食</button>
+      <button class="tab-btn active" onclick="switchTab('seafood', event)">海鮮丼</button>
+      <button class="tab-btn" onclick="switchTab('ramen', event)">ラーメン</button>
+      <button class="tab-btn" onclick="switchTab('teishoku', event)">定食</button>
     </div>
 
     <!-- 海鮮丼 -->
@@ -387,9 +387,25 @@
 
   <!-- 常磐道 SA/PA -->
   <div class="card">
-    <div class="card-title">🍱 常磐道 SA/PA名物グルメ</div>
-    <a href="https://www.driveplaza.com/sapa/area/joban/" target="_blank" class="btn btn-orange">
-      ドラぷら：常磐道 SA・PA一覧を見る
+    <div class="card-title">🍱 常磐道 主要SA/PA名物グルメ</div>
+    
+    <div class="item-card">
+      <div class="item-title">守谷SA（下り：茨城）「Pasar守谷」</div>
+      <div class="item-desc">茨城県産ブランド豚「ローズポーク」のトンカツや地元銘菓が充実。大規模で休憩に最適。</div>
+    </div>
+
+    <div class="item-card">
+      <div class="item-title">友部SA（下り：茨城）</div>
+      <div class="item-desc">【人気No.1】アツアツ鉄板で食べる「ホルモン鉄板焼き定食」や茨城名物納豆グルメ。</div>
+    </div>
+
+    <div class="item-card">
+      <div class="item-title">中郷SA（上り・下り：茨城）</div>
+      <div class="item-desc">限定販売の濃厚「茨城スイートポテト」や那須御用卵を使ったシュガーリングバーム。</div>
+    </div>
+
+    <a href="https://www.driveplaza.com/sapa/" target="_blank" class="btn btn-orange">
+      ドラぷら公式：全国・常磐道 SA/PA検索
     </a>
   </div>
 
@@ -414,13 +430,11 @@
   </footer>
 
   <script>
-    function switchTab(tabId) {
-      // タブの全非アクティブ化
+    function switchTab(tabId, event) {
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
       document.querySelectorAll('.gourmet-group').forEach(group => group.classList.remove('active'));
 
-      // 選択したタブのアクティブ化
-      event.target.classList.add('active');
+      event.currentTarget.classList.add('active');
       document.getElementById(tabId).classList.add('active');
     }
   </script>
