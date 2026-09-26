@@ -3,209 +3,315 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>千葉旅行サポートナビ（10/2〜10/3）</title>
+  <title>常磐道ドライブナビ</title>
+  <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/854/854878.png">
   <style>
+    :root {
+      --bg-color: #0f172a;
+      --card-bg: rgba(30, 41, 59, 0.7);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --primary: #38bdf8;
+      --primary-accent: #0284c7;
+      --accent-orange: #f97316;
+      --accent-green: #10b981;
+      --accent-purple: #a855f7;
+      --text-main: #f8fafc;
+      --text-sub: #94a3b8;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-    }
-    body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      line-height: 1.6;
-      background-color: #f4f7f6;
-      color: #333;
-      padding: 16px;
     }
-    .container {
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      padding: 16px;
       max-width: 600px;
       margin: 0 auto;
+      line-height: 1.5;
     }
+
     header {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 20px 16px;
       text-align: center;
-      margin-bottom: 20px;
-      background: #2c3e50;
-      color: #fff;
-      padding: 16px;
-      border-radius: 8px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
+
     header h1 {
-      font-size: 1.3rem;
-      margin-bottom: 4px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 6px;
     }
+
     header p {
       font-size: 0.85rem;
-      opacity: 0.9;
+      color: var(--text-sub);
     }
+
     .card {
-      background: #fff;
-      border-radius: 8px;
-      padding: 16px;
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 18px;
       margin-bottom: 16px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
+
     .card-title {
       font-size: 1.1rem;
-      font-weight: bold;
-      color: #2c3e50;
-      margin-bottom: 10px;
+      font-weight: 600;
       display: flex;
       align-items: center;
-      border-bottom: 2px solid #ecf0f1;
-      padding-bottom: 6px;
-    }
-    .card-title span {
-      margin-right: 8px;
-    }
-    p.desc {
-      font-size: 0.85rem;
-      color: #666;
+      gap: 8px;
       margin-bottom: 12px;
+      color: #ffffff;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 8px;
     }
-    .info-list {
-      list-style: none;
-      font-size: 0.9rem;
-      margin-bottom: 12px;
-    }
-    .info-list li {
-      padding: 6px 0;
-      border-bottom: 1px dashed #eee;
-    }
-    .info-list li:last-child {
-      border-bottom: none;
-    }
-    .info-list strong {
-      color: #e67e22;
-    }
-    .btn-group {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .btn {
-      display: block;
-      width: 100%;
-      text-align: center;
-      background-color: #3498db;
-      color: white;
-      text-decoration: none;
-      padding: 12px 0;
+
+    .notice-box {
+      background: rgba(249, 115, 22, 0.15);
+      border-left: 4px solid var(--accent-orange);
       border-radius: 6px;
-      font-weight: bold;
-      font-size: 0.95rem;
-      transition: background-color 0.2s;
-    }
-    .btn:hover {
-      background-color: #2980b9;
-    }
-    .btn-danger {
-      background-color: #e74c3c;
-    }
-    .btn-danger:hover {
-      background-color: #c0392b;
-    }
-    .btn-success {
-      background-color: #2ecc71;
-    }
-    .btn-success:hover {
-      background-color: #27ae60;
-    }
-    .btn-orange {
-      background-color: #e67e22;
-    }
-    .btn-orange:hover {
-      background-color: #d35400;
-    }
-    .alert-box {
-      background-color: #fff3cd;
-      border-left: 4px solid #ffc107;
-      padding: 10px;
+      padding: 10px 12px;
       font-size: 0.85rem;
-      color: #856404;
+      color: #ffedd5;
       margin-bottom: 12px;
-      border-radius: 0 4px 4px 0;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      color: #ffffff;
+      margin-bottom: 10px;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .btn:last-child {
+      margin-bottom: 0;
+    }
+
+    .btn-red { background: linear-gradient(135deg, #ef4444, #dc2626); }
+    .btn-blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+    .btn-orange { background: linear-gradient(135deg, #f97316, #ea580c); }
+    .btn-green { background: linear-gradient(135deg, #10b981, #059669); }
+    .btn-purple { background: linear-gradient(135deg, #a855f7, #7c3aed); }
+
+    .btn:active {
+      transform: scale(0.98);
+      opacity: 0.9;
+    }
+
+    .item-list {
+      list-style: none;
+    }
+
+    .item-card {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+
+    .item-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .item-title {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .item-desc {
+      color: var(--text-sub);
+      font-size: 0.82rem;
+      margin-top: 2px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-sub);
+      margin-top: 24px;
+      margin-bottom: 12px;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <header>
-      <h1>🚗 千葉旅行サポートナビ</h1>
-      <p>日程：10月2日(金) 〜 10月3日(土) | 目的地：千葉県方面</p>
-    </header>
+  <header>
+    <h1>🚗 常磐道ドライブナビ</h1>
+    <p>日程：10月2日(金) 〜 10月3日(土) | 仙台 ⇔ 常磐道 ⇔ 千葉</p>
+  </header>
 
-    <!-- 高速道路通行止めチェック -->
-    <div class="card">
-      <div class="card-title">
-        <span>🛣️</span> 高速道路通行止め情報（仙台→常磐道）
-      </div>
-      <div class="alert-box">
-        ⚠️ 宿の規定：高速道路通行止めで到達不可の場合、キャンセル料なしで返金
-      </div>
-      <p class="desc">リアルタイムの規制・通行止め状況を直接確認できます。</p>
-      <div class="btn-group">
-        <a href="https://drivetraffic.jp/" target="_blank" class="btn btn-danger">ドラとら（NEXCO東日本 リアルタイム規制）</a>
-        <a href="https://www.google.com/search?q=%E4%B8%B8%E7%A3%90%E9%81%93+%E9%80%9A%E8%A1%8C%E6%AD%A2%E3%81%93" target="_blank" class="btn">「常磐道 通行止め」でGoogle検索</a>
-      </div>
+  <!-- 高速道路通行止め・規制情報 -->
+  <div class="card">
+    <div class="card-title">🚧 高速道路規制・通行止め情報</div>
+    <div class="notice-box">
+      ⚠️ 宿の規定：高速道路の通行止め等で到達不可の場合、キャンセル料なしで返金
     </div>
-
-    <!-- 常磐道 SAおすすめグルメ -->
-    <div class="card">
-      <div class="card-title">
-        <span>🍱</span> 常磐道 SAおすすめグルメ
-      </div>
-      <p class="desc">仙台〜千葉間で寄り道したい人気のサービスエリア情報です。</p>
-      <ul class="info-list">
-        <li><strong>友部SA（上り）：</strong> 筑波山もち豚の炙り豚丼、ほしかったの干し芋</li>
-        <li><strong>守谷SA（上り）：</strong> 茨城名物納豆ドッグ、守谷ちずけーき</li>
-        <li><strong>中郷SA（上り）：</strong> メヒカリのから揚げ、常陸牛ハンバーグ</li>
-      </ul>
-      <div class="btn-group">
-        <a href="https://www.driveplaza.com/sapa/joban/" target="_blank" class="btn btn-orange">ドラぷら：常磐道SA・PA一覧</a>
-      </div>
-    </div>
-
-    <!-- 立ち寄りスポット -->
-    <div class="card">
-      <div class="card-title">
-        <span>📍</span> 道中・目的地周辺のおすすめスポット
-      </div>
-      <p class="desc">常磐道沿い〜千葉到着までのドライブで立ち寄りやすい名所です。</p>
-      <ul class="info-list">
-        <li><strong>国営ひたち海浜公園（茨城県）：</strong> 広大な園内と季節の絶景スポット</li>
-        <li><strong>牛久大仏（茨城県）：</strong> 世界最大級の青銅製大仏</li>
-        <li><strong>道の駅・観光施設（千葉県）：</strong> 地元の新鮮野菜や特産品グルメ</li>
-      </ul>
-      <div class="btn-group">
-        <a href="https://www.google.com/maps/search/%E5%8D%83%E8%91%89%E7%9C%8C+%E8%A6%B3%E5%85%89%E3%82%B9%E3%83%9D%E3%83%83%E3%83%80" target="_blank" class="btn">Googleマップで周辺観光スポットを探す</a>
-      </div>
-    </div>
-
-    <!-- 10月2日の天気情報 -->
-    <div class="card">
-      <div class="card-title">
-        <span>🌤️</span> 10月2日 ピンポイント天気・台風情報
-      </div>
-      <p class="desc">目的地（千葉県）および道中の台風の影響・雨風の予測を確認します。</p>
-      <div class="btn-group">
-        <a href="https://tenki.jp/forecast/3/15/" target="_blank" class="btn btn-success">日本気象協会（千葉県の天気予報）</a>
-        <a href="https://www.jma.go.jp/bosai/typhoon/" target="_blank" class="btn">気象庁 台風情報（最新の進路）</a>
-      </div>
-    </div>
-
-    <!-- JCBギフトカードが使える店 -->
-    <div class="card">
-      <div class="card-title">
-        <span>💳</span> JCBギフトカードが使えるお店検索
-      </div>
-      <p class="desc">現地や移動先でギフト券が使える加盟店を検索できます。</p>
-      <div class="btn-group">
-        <a href="https://www.jcb.co.jp/gift/gift-card/pop/use-merchant.html" target="_blank" class="btn">JCB公式：使えるお店一覧</a>
-        <a href="https://www.google.com/maps/search/JCB%E3%82%AE%E3%83%95%E3%83%88%E3%82%AB%E3%83%BC%E3%83%89+%E4%BD%BF%E3%81%88%E3%82%8B%E5%BA%97+%E5%8D%83%E8%91%89%E7%9C%8C" target="_blank" class="btn">Googleマップで千葉県の使えるお店を探す</a>
-      </div>
-    </div>
+    <a href="https://driveplaza.com/traffic/" target="_blank" class="btn btn-red">
+      ドラとら（NEXCO東日本 リアルタイム規制）
+    </a>
+    <a href="https://www.google.com/search?q=%E5%B8%B8%E7%A3%90%E9%81%93+%E9%80%9A%E8%A1%8C%E6%AD%A2%E3%82%81" target="_blank" class="btn btn-blue">
+      「常磐道 通行止め」でGoogle検索
+    </a>
   </div>
+
+  <!-- 【新規】千葉県一般道 冠水注意箇所＆危険区域マップ -->
+  <div class="card">
+    <div class="card-title">🌊 千葉県 一般道 冠水・危険区域マップ</div>
+    <div class="notice-box" style="background: rgba(168, 85, 247, 0.15); border-left-color: var(--accent-purple); color: #f3e8ff;">
+      💡 高速道路を降りた後のアンダーパス冠水や危険道路の確認用
+    </div>
+    <a href="https://www.ktr.mlit.go.jp/chiba/chiba00030.html" target="_blank" class="btn btn-purple">
+      千葉県 道路冠水注意箇所マップ（国土交通省）
+    </a>
+    <a href="http://www.bousai.pref.chiba.lg.jp/" target="_blank" class="btn btn-blue">
+      千葉県防災ポータル（雨量・道路規制）
+    </a>
+    <a href="https://search.yahoo.co.jp/realtime/search?p=%E5%8D%83%E8%91%89+%E5%86%A0%E6%B0%B4" target="_blank" class="btn btn-orange">
+      リアルタイムSNS検索「千葉 冠水」
+    </a>
+  </div>
+
+  <!-- 天気・台風情報（2日間） -->
+  <div class="card">
+    <div class="card-title">🌀 10/2(金)・10/3(土) ピンポイント天気＆台風</div>
+    <div class="item-list" style="margin-bottom: 10px;">
+      <div class="item-card">
+        <div class="item-title">10月2日(金)</div>
+        <div class="item-desc">仙台〜千葉・沿線広域の雨量・風速予報</div>
+      </div>
+      <div class="item-card">
+        <div class="item-title">10月3日(土)</div>
+        <div class="item-desc">復路・目的地周辺の最新気象コンディション</div>
+      </div>
+    </div>
+    <a href="https://tenki.jp/typhoon/" target="_blank" class="btn btn-blue">
+      tenki.jp 最新台風情報・台風進路図
+    </a>
+  </div>
+
+  <!-- 常磐道 SA/PA おすすめグルメ5選 -->
+  <div class="card">
+    <div class="card-title">🍱 常磐道 SA/PAおすすめグルメ5選</div>
+    <ul class="item-list" style="margin-bottom: 12px;">
+      <li class="item-card">
+        <div class="item-title">1. 友部SA（上り）</div>
+        <div class="item-desc">筑波山もち豚の炙り豚丼、ほしかったの干し芋</div>
+      </li>
+      <li class="item-card">
+        <div class="item-title">2. 守谷SA（上り）</div>
+        <div class="item-desc">茨城名物納豆ドッグ、守谷ちずけーき</div>
+      </li>
+      <li class="item-card">
+        <div class="item-title">3. 中郷SA（上り）</div>
+        <div class="item-desc">メヒカリのから揚げ、常陸牛ハンバーグ</div>
+      </li>
+      <li class="item-card">
+        <div class="item-title">4. 東海PA（上り）</div>
+        <div class="item-desc">茨城県産芋を使ったなめらかスイートポテト・軽食</div>
+      </li>
+      <li class="item-card">
+        <div class="item-title">5. 千代田PA（上り）</div>
+        <div class="item-desc">ドライバー御用達！手作りモツ煮定食</div>
+      </li>
+    </ul>
+    <a href="https://www.driveplaza.com/sapa/area/joban/" target="_blank" class="btn btn-orange">
+      ドラぷら：常磐道 SA・PA一覧
+    </a>
+  </div>
+
+  <!-- 道中・目的地周辺おすすめスポット5選 -->
+  <div class="card">
+    <div class="card-title">📍 道中・目的地周辺スポット5選</div>
+    <ul class="item-list">
+      <li class="item-card">
+        <div class="item-title">1. 国営ひたち海浜公園（茨城県）</div>
+        <div class="item-desc">広大な園内と季節の絶景スポット（ひたちなかICすぐ）</div>
+      </li>
+      <li class="item-card">
+        <div class="item-title">2. 牛久大仏（茨城県）</div>
+        <div class="item-desc">世界最大級の青銅製立像（阿見東ICより約3分）</div>
+      </li>
+      <li class="item-card">
+        <div class="item-title">3. 袋田の滝（茨城県）</div>
+        <div class="item-desc">日本三名瀑の一つ。迫力満点の大自然スポット</div>
+      </li>
+      <li class="item-card">
+        <div class="item-title">4. 成田山新勝寺（千葉県）</div>
+        <div class="item-desc">歴史ある参道と名物のうなぎ料理を満喫</div>
+      </li>
+      <li class="item-card">
+        <div class="item-title">5. 鋸山 日本寺（千葉県）</div>
+        <div class="item-desc">スリル満点の「地獄覗き」と絶景東京湾パノラマ</div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 常磐道 沿線イオンモール検索 -->
+  <div class="card">
+    <div class="card-title">🛍️ 常磐道 沿線イオンモール検索</div>
+    <div class="item-list" style="margin-bottom: 12px;">
+      <div class="item-card">
+        <div class="item-title">主な立ち寄りスポット</div>
+        <div class="item-desc">イオンモールつくば / 土浦 / 水戸内原 / いわき小名浜</div>
+      </div>
+    </div>
+    <a href="https://www.google.com/maps/search/%E5%B8%B8%E7%A3%90%E9%81%93+%E3%82%A4%E3%82%AA%E3%83%B3%E3%83%A2%E3%83%BC%E3%83%AB" target="_blank" class="btn btn-green">
+      現在地から近くのイオンモールを検索
+    </a>
+  </div>
+
+  <!-- JCBギフトカード 利用可能店舗検索 -->
+  <div class="card">
+    <div class="card-title">💳 JCBギフトカード 使えるお店検索</div>
+    <p style="font-size: 0.8rem; color: var(--text-sub); margin-bottom: 10px;">
+      福島県・茨城県・千葉県のおもな対象チェーン・店舗
+    </p>
+    <ul class="item-list" style="margin-bottom: 12px;">
+      <li class="item-card">
+        <div class="item-title">【スーパー】</div>
+        <div class="item-desc">イオン、イトーヨーカドー、ヨークベニマル、ベイシア</div>
+      </li>
+      <li class="item-card">
+        <div class="item-title">【家電・ホームセンター】</div>
+        <div class="item-desc">ケーズデンキ、ヤマダデンキ、カインズ、コメリ</div>
+      </li>
+      <li class="item-card">
+        <div class="item-title">【飲食店・ドラッグストア】</div>
+        <div class="item-desc">デニーズ、木曽路、ウエルシア、ツルハドラッグ</div>
+      </li>
+    </ul>
+    <a href="https://www.jcb.co.jp/voucher/gift-card/merchant.html" target="_blank" class="btn btn-blue">
+      JCB公式：使えるお店一覧（全国・県別）
+    </a>
+  </div>
+
+  <footer>
+    &copy; 2026 常磐道旅行サポートナビ
+  </footer>
 
 </body>
 </html>
